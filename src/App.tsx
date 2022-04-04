@@ -1,30 +1,13 @@
-import { useContext } from "react"
-import { useFetch } from "./hooks/useFetch"
+import { Route, Routes } from 'react-router-dom'
 
-type RepoProps = {
-  full_name: string
-  description: string
-}
+import { Repo } from './pages/Repo'
+import { Repos } from './pages/Repos'
 
-function App() {
-  const { data: repos, isFetching, error } = 
-    useFetch<RepoProps[]>('users/flvSantos15/repos')
-  return (
-    <ul>
-      {isFetching && <p>Carregando...</p>}
-      {repos?.map((repo, index) => {
-        return (
-          <li key={index}>
-            <strong>{repo.full_name}</strong>
-            <p>
-              {repo.description ? repo.description : 'No description'}
-            </p>
-          </li>
-        )
-      })}
-      {error && 'Erro ao buscar dados!'}
-    </ul>
+export function App(){
+  return(
+    <Routes>
+      <Route path='/' element={<Repos />} />
+      <Route path='/repos/*' element={<Repo />} />
+    </Routes>
   )
 }
-
-export default App

@@ -5,6 +5,12 @@ const api = axios.create({
   baseURL: 'https://api.github.com'
 })
 
+// utilizao essa parte no código onde desejo 
+// utilizar o hook
+// import { useFetch } from "./hooks/useFetch"
+//   const { data: repos, isFetching, error } = 
+//     useFetch<RepoProps[]>('users/flvSantos15/repos')
+
 // o T é um fragment de tipagem do ts
 //utilizo pra dizer q a tipagem é desconhecida
 export function useFetch<T = unknown>(url: string, options?: AxiosRequestConfig){
